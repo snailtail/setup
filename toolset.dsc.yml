@@ -1,0 +1,315 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+# Reference: https://github.com/microsoft/PowerToys/blob/main/doc/devdocs/readme.md#compiling-powertoys
+properties:
+  configurationVersion: 0.2.0
+  resources:
+ 
+    # Creates a new Dev Drive volume with Drive letter 'Z' and label 'Dev Drive 1' onto disk 0
+    - resource: Disk
+      id: DevDrive1
+      directives:
+        module: StorageDsc
+        description: 'Format a new Dev Drive volume onto Disk 0'
+        allowPrerelease: true
+      settings:
+        DiskId: '0'
+        DiskIdType: 'Number'
+        DriveLetter: 'Z'
+        FSLabel: 'Dev Drive'
+        DevDrive: true
+        AllowDestructive: true
+        FSFormat: 'ReFS'
+        Size: '40Gb'
+
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: install-git
+      directives:
+        description: Install git
+        allowPrerelease: true
+      settings:
+        id: git.git
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: install-vs-code
+      directives:
+        description: Install Microsoft.VisualStudioCode
+        allowPrerelease: true
+      settings:
+        id: Microsoft.VisualStudioCode
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: install-microsoft-powerShell
+      directives:
+        description: Install Microsoft.PowerShell 7
+        allowPrerelease: true
+      settings:
+        id: Microsoft.PowerShell
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: install-mozilla-firefox
+      directives:
+        description: Install Mozilla Firefox
+        allowPrerelease: true
+      settings:
+        id: Mozilla.Firefox
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: install-notepadplusplus
+      directives:
+        description: Install Notepad++
+        allowPrerelease: true
+      settings:
+        id: Notepad++.Notepad++
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: install-vmware-horizonclient
+      directives:
+        description: Install VMware Horizon Client
+        allowPrerelease: true
+      settings:
+        id: VMware.HorizonClient
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: install-mremoteng
+      directives:
+        description: Install mRemoteNG
+        allowPrerelease: true
+      settings:
+        id: mRemoteNG.mRemoteNG
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: install-microsoft-dotnet-sdk-8
+      directives:
+        description: Install DotNet SDK 8
+        allowPrerelease: true
+      settings:
+        id: Microsoft.DotNet.SDK.8
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: install-github.githubdesktop
+      directives:
+        description: Install GitHub Desktop
+        allowPrerelease: true
+      settings:
+        id: GitHub.GitHubDesktop
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: install-postman
+      directives:
+        description: Install Postman
+        allowPrerelease: true
+      settings:
+        id: Postman.Postman
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: install-spotify
+      directives:
+        description: Install Spotify
+        allowPrerelease: true
+      settings:
+        id: Spotify.Spotify
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: install-baremetalsoft-baretail
+      directives:
+        description: Install Baremetalsoft Baretail
+        allowPrerelease: true
+      settings:
+        id: baremetalsoft.baretail
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: install-microsoft-azuredatastudio
+      directives:
+        description: Install Microsoft Azure Data Studio
+        allowPrerelease: true
+      settings:
+        id: Microsoft.AzureDataStudio
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: install-microsoft-powertoys
+      directives:
+        description: Install Microsoft PowerToys
+        allowPrerelease: true
+      settings:
+        id: Microsoft.PowerToys
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: install-microsoft-windows-terminal
+      directives:
+        description: Install Windows Terminal
+        allowPrerelease: true
+      settings:
+        id: Microsoft.WindowsTerminal
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: install-mythicsoft-agentransack
+      directives:
+        description: Install Mythicsoft Agent Ransack
+        allowPrerelease: true
+      settings:
+        id: Mythicsoft.AgentRansack
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: install-visualstudio2022-professional
+      directives:
+        description: Install VisualStudio 2022 Professional
+        allowPrerelease: true
+      settings:
+        id: Microsoft.VisualStudio.2022.Professional
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: install-servicebus-explorer
+      directives:
+        description: Install ServiceBus Explorer
+        allowPrerelease: true
+      settings:
+        id: paolosalvatori.ServiceBusExplorer
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: install-pstools
+      directives:
+        description: Install Sysinternals PsTools
+        allowPrerelease: true
+      settings:
+        id: Microsoft.Sysinternals.PsTools
+        source: winget
+
+    - resource: Microsoft.VSCode.DSC/VSCodeExtension
+      id: install-csharp-dev-kit
+      dependsOn:
+        - install-vs-code
+      directives:
+        description: Install C# Dev Kit
+        allowPrerelease: true
+      settings:
+        name: ms-dotnettools.csdevkit
+        exist: true
+
+    - resource: Microsoft.VSCode.DSC/VSCodeExtension
+      id: install-eamodio-gitlens
+      dependsOn:
+        - install-vs-code
+      directives:
+        description: Install Git Lens
+        allowPrerelease: true
+      settings:
+        name: eamodio.gitlens
+        exist: true
+
+    - resource: Microsoft.VSCode.DSC/VSCodeExtension
+      id: install-vscode-dotnet-runtime
+      dependsOn:
+        - install-vs-code
+      directives:
+        description: Install .NET Install Tool
+        allowPrerelease: true
+      settings:
+        name: ms-dotnettools.vscode-dotnet-runtime
+        exist: true
+
+    - resource: Microsoft.VSCode.DSC/VSCodeExtension
+      id: install-donjayamanne-githistory
+      dependsOn:
+        - install-vs-code
+      directives:
+        description: Install Git History
+        allowPrerelease: true
+      settings:
+        name: donjayamanne.githistory
+        exist: true
+
+    - resource: Microsoft.VSCode.DSC/VSCodeExtension
+      id: install-ms-vscode-hexeditor
+      dependsOn:
+        - install-vs-code
+      directives:
+        description: Install Hex Editor
+        allowPrerelease: true
+      settings:
+        name: ms-vscode.hexeditor
+        exist: true
+
+    - resource: Microsoft.VSCode.DSC/VSCodeExtension
+      id: install-quicktype-quicktype
+      dependsOn:
+        - install-vs-code
+      directives:
+        description: Install Paste JSON as Code
+        allowPrerelease: true
+      settings:
+        name: quicktype.quicktype
+        exist: true
+
+    - resource: Microsoft.VSCode.DSC/VSCodeExtension
+      id: install-ms-vscode-powershell
+      dependsOn:
+        - install-vs-code
+      directives:
+        description: Install Powershell
+        allowPrerelease: true
+      settings:
+        name: ms-vscode.powershell
+        exist: true
+
+    - resource: Microsoft.VSCode.DSC/VSCodeExtension
+      id: install-helixquar-randomeverything
+      dependsOn:
+        - install-vs-code
+      directives:
+        description: Install Random Everything
+        allowPrerelease: true
+      settings:
+        name: helixquar.randomeverything
+        exist: true
+
+    - resource: Microsoft.VSCode.DSC/VSCodeExtension
+      id: install-redhat-vscode-xml
+      dependsOn:
+        - install-vs-code
+      directives:
+        description: Install RedHat XML Language Support
+        allowPrerelease: true
+      settings:
+        name: redhat.vscode-xml
+        exist: true
+
+    - resource: Microsoft.VSCode.DSC/VSCodeExtension
+      id: install-dotjoshjohnson-xml
+      dependsOn:
+        - install-vs-code
+      directives:
+        description: Install XML Tools
+        allowPrerelease: true
+      settings:
+        name: DotJoshJohnson.xml
+        exist: true
+
+    - resource: Microsoft.VSCode.DSC/VSCodeExtension
+      id: install-ms-vscode-remote-remote-wsl
+      dependsOn:
+        - install-vs-code
+      directives:
+        description: Install WSL support
+        allowPrerelease: true
+      settings:
+        name: ms-vscode-remote.remote-wsl
+        exist: true
