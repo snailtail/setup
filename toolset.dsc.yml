@@ -94,15 +94,6 @@ properties:
         source: winget
 
     - resource: Microsoft.WinGet.DSC/WinGetPackage
-      id: install-spotify
-      directives:
-        description: Install Spotify
-        allowPrerelease: true
-      settings:
-        id: Spotify.Spotify
-        source: winget
-
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: install-baremetalsoft-baretail
       directives:
         description: Install Baremetalsoft Baretail
