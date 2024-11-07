@@ -2,25 +2,7 @@
 properties:
   configurationVersion: 0.2.0
   resources:
- 
-    # Creates a new Dev Drive volume with Drive letter 'Z' and label 'Dev Drive 1' onto disk 0
-    - resource: Disk
-      id: DevDrive1
-      directives:
-        module: StorageDsc
-        description: 'Format a new Dev Drive volume onto Disk 0'
-        allowPrerelease: true
-      settings:
-        DiskId: '0'
-        DiskIdType: 'Number'
-        DriveLetter: 'Z'
-        FSLabel: 'Dev Drive'
-        DevDrive: true
-        AllowDestructive: true
-        FSFormat: 'ReFS'
-        Size: '50Gb'
-
-
+  # Install the basic tools
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: install-git
       directives:
