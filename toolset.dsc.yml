@@ -19,7 +19,7 @@ properties:
         DevDrive: true
         AllowDestructive: true
         FSFormat: 'ReFS'
-        Size: '40Gb'
+        Size: '50Gb'
 
 
     - resource: Microsoft.WinGet.DSC/WinGetPackage
