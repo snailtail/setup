@@ -21,9 +21,7 @@ $mainFunction =
     {
         # Shoulder tap terminal so it gets registered moving foward
         Start-Process shell:AppsFolder\Microsoft.WindowsTerminal_8wekyb3d8bbwe!App
-
-        # restarting for Admin now
-        Start-Process PowerShell -wait -Verb RunAs "-NoProfile -ExecutionPolicy Bypass -Command `"cd '$pwd'; & '$mypath' $Args;`"";
+        Write-Host "Sorry but you need to run this as admin. Start PowerShell as admin and try running the script again."
         exit;
     }
     else 
